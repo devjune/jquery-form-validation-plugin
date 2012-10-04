@@ -1,10 +1,12 @@
 /**
- * jQuery Alert Form Plugin 0.1b
- *
- * https://github.com/sjune/jquery-alert-form-validator
- *
- * Copyright (c) 2011 sjune (http://www.sjune.net)
- *
+ * jQuery Alert Form Plugin
+ * 
+ * @version :  0.1b
+ * @requires : jQuery v1.3 or later
+ * @github at : https://github.com/sjune/jquery-alert-form-validator
+ * @author : sjune (dev.sjune@gmail.com)
+ * 
+ * Copyright (c) 2011 sjune (dev.sjune@gmail.com)
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
