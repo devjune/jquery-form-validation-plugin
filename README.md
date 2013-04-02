@@ -1,4 +1,4 @@
-==jQuery alet-form validatior plugin
+## jQuery alet-form validatior plugin
 
 version 0.1b
 
