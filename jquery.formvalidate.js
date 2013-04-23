@@ -3,7 +3,7 @@
  * 
  * @version :  0.1b
  * @requires : jQuery v1.3 or later
- * @github at : https://github.com/sjune/jquery-alert-form-validator
+ * @github at : https://github.com/sjune/jquery-form-validation-plugin
  * @author : sjune (dev.sjune@gmail.com)
  * 
  * Copyright (c) 2011 sjune (dev.sjune@gmail.com)
