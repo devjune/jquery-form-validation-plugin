@@ -243,9 +243,9 @@
             } // end of switch
             return message;
         },
-
+        
         /**
-         * 플러그인 destroy.
+         * plugin destroy
          */
         destroy : function() {
             $.validate.init();
@@ -322,6 +322,6 @@
 
     $.fn.extend({
         formValidate : $.validate.build,
-        destroyFormValidate : $.validate.destroy
+        destroyFormValidate : $.validate.destroyFormValidate
     });
 })(jQuery);
