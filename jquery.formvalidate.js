@@ -245,7 +245,7 @@
         },
         
         /**
-         * plugin destroy
+         * destroy this plugin
          */
         destroy : function() {
             $.validate.init();
@@ -322,6 +322,6 @@
 
     $.fn.extend({
         formValidate : $.validate.build,
-        destroyFormValidate : $.validate.destroyFormValidate
+        destroyFormValidate : $.validate.destroy
     });
 })(jQuery);
