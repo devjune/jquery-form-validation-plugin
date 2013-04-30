@@ -15,11 +15,11 @@ jquery core와 plugin script를 로드합니다.
 
 플러그인은 아래와 같이 호출합니다. selector는 유효성 검증을 할 폼으로 지정합니다.
 ```javascript
-var options = { allRequired : true /*그 외 옵션 명시*/};
+var options = { allRequired : true /*옵션 명시*/};
 jQuery('form').formValidate(options);
 ```
 
-html 폼 태그에는 별다른 수정이 없습니다. 다만 name 속성은 반드시 포함되어야 합니다.
+html 폼 태그에는 별다른 수정이 없습니다. 다만 input태그에 name 속성이 반드시 포함되어야 합니다.
 
 ```html
 <form>
