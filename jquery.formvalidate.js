@@ -1,96 +1,40 @@
-/**
- * jQuery Alert Form Plugin
+/*!
+ * jQuery form validation plugin
+ * - jQuery 폼유효성 체크 플러그인
  *
- * @version :  0.1b
- * @requires : jQuery v1.3 or later
+ * @version : 0.2b
+ * @requires : jQuery v1.2+
  * @github at : https://github.com/sjune/jquery-form-validation-plugin
  * @author : sjune (dev.sjune@gmail.com)
+ * @since 2011.08.18
  *
  * Copyright (c) 2011 sjune (dev.sjune@gmail.com)
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
- *
- * ###################### 임시 매뉴얼 - 추후 도큐먼트로 뺄 계획 #######################
- *  - Form 유효성 check jQuery 플러그인
- *  - 사용법 : document ready 시에 유효성 처리가 필요한 form에 formValidate bind 시킨다.
- *    ex)
- *       // 1. 태그 각각에 대해서 규칙을 설정할 경우
- *       var options = {
- *            // tag의 이름과 경고창에 보여질 레이블 이름을 정의
- *            label : {
- *                "bordTitle" : "제목을"   //  <- '제목을 입력해주세요'
- *                "email":  "이메일을" // <- '이메일을 입력해주세요'
- *            },
- *            // 규칙 정의. rule를 반드시 정의 되어야 태그에 대해 유효성 검증을 한다.
- *            // require : 빈값 체크
- *            // email : 이메일 필수입력
- *            // number : 숫자만 허용
- *            // minLength : 최소 길이
- *            // maxLength : 최대 길이
- *            rules : {
- *                "bordTitle" : {
- *                    "required" : true,
- *                    "maxLength" : 50
- *                },
- *                "emailAddress" : {
- *                    "email" : true
- *                }
- *            }
- *        };
- *        $("#write_form").formValidate(options);
- *
- *        // 2. form 에 존재하는 모든 태그에 규칙을 설정할 경우
- *       var options = {
- *            // allRequired 속성을 사용하면 form에 존재하는 모든 태그에 규칙을 적용한다.
- *            allRequired : true,
- *            // 예외적으로 검증을 하지 않아야 할 태그가 있다면 exception 요소를 이용한다.
- *            exception : {
- *                "emailAddress" : {
- *                    "email" : required
- *                },
- *                "homepage" : {
- *                    "required" : false // 필수입력 제외
- *                }
- *            }
- *        };
- *        $("#write_form").formValidate(options);
- *
- *        // 3. 유효성 검증을 하고난 후
- *        // 특별히 추가적으로 해야할 작업이 필요하다면
- *        // customSubmit 속성을 이용하여 자동 submit을 멈출 수 있다.
- *       var options = {
- *            allRequired : true,
- *            customSubmit : function() {
- *                Editor.save();  // formValidate 플러그인의 submit을 이용하지 않고 Editor의 save 함수를 이용하여 저장
- *            }
- *        };
- *        $("#write_form").formValidate(options);
- *
- * @since 2011.08.18
- * @version 0.3
- * @author dev.sjune@gmail.com
- * @last_modified
  */
 
+/**
+ * jQuery form validate plugin.
+ */
 (function ($) {
     $.validate = {
         currentForm : null,
         config : {
-            allRequired : false,    // 유효성 검사 필드 전체 적용 여부
-            rules : {},             // 유효성 검사 rule
-            label : {},             // 필드의 레이블
-            customSubmit : null     // 직접 submit 할 경우 함수
+            allRequired : false,          // 유효성 검사 필드 전체 적용 여부
+            rules : {},                     // 유효성 검사 rule
+            label : {},                     // 필드의 레이블
+            customSubmit : null      // 직접 submit 할 경우 함수
         },
-        build : function(options) {
+        build : function(opts) {
             if(!$(this).is("form")) return false;
 
             $.validate.currentForm = $(this);
-            $.extend($.validate.config, options);    // merge config and options..
+            $.extend($.validate.config, opts);   // config에 options를 merge함.
 
             $.validate.currentForm.submit(function(){
-                if($.validate.config.allRequired && !$.validate.checkForm()) return false;
-                if(!$.validate.checkRequiedForm()) return false;
+                if($.validate.config.allRequired && !$.validate.validateForm()) return false;
+                if(!$.validate.validateRequiedForm()) return false;
                 if($.isFunction($.validate.config.customSubmit)) {
                     try {
                         $.validate.config.customSubmit();
@@ -104,7 +48,7 @@
         /**
          * 특정 name을 가진 필드에 대해서 유효성 검증
          */
-        checkRequiedForm : function() {
+        validateRequiedForm : function() {
             var $frm = $.validate.currentForm;
             var rules = $.validate.config.rules;
 
@@ -135,12 +79,12 @@
                             }
                         }
                     } catch(e) {
-                        alert("checkRequiedForm() error ! : " + e);
+                        alert("validateRequiedForm() error ! : " + e);
                         return false;
                         break;
                     }
-                } // end for
-            } // end for
+                } // end of for
+            } // end of for
 
             return true;
         },
@@ -149,7 +93,7 @@
          * form 에 있는 모든 필드에 대해 유효성 검증
          * exception 목록에 포함된 필드는 유효성 검증에 제외시킴
          */
-        checkForm : function() {
+        validateForm : function() {
             var $frm = $.validate.currentForm;
             var exceptionList = $.validate.getExceptionList();
             var returnFlag = true;
@@ -178,7 +122,7 @@
                         return false;
                     }
                 } catch(e) {
-                    alert("checkForm() error ! : " + e);
+                    alert("validateForm() error ! : " + e);
                     return false;
                 }
             });
@@ -262,7 +206,7 @@
                         return false;
                     }
                     break;
-            } // end switch
+            } // end of switch
             return true;
         },
 
@@ -292,15 +236,16 @@
                         .replace("%s", tagName)
                         .replace("%d", validateLength);
                 break;
-            }
+            } // end of switch
             return message;
         }
     };
 
     /**
      * 경고창 메시지 정의
-     * validateType : required(필수입력), number(숫자만), email(이메일주소)
-     *                minLength(최소길이값), maxLength(최대길이값)
+     *  @validateType
+     *      required(필수입력), number(숫자만), email(이메일주소),
+     *      minLength(최소길이값), maxLength(최대길이값)
      */
     $.messages = {
         required : {
@@ -323,9 +268,10 @@
     };
 
     /**
-     * 값 검증
-     * validateType : required(필수입력), number(숫자만), email(이메일주소)
-     *                minLength(최소길이값), maxLength(최대길이값)
+     * 입력값 검증
+     *  @validateType
+     *      required(필수입력), number(숫자만), email(이메일주소),
+     *      minLength(최소길이값), maxLength(최대길이값)
      */
     $.isValidValue = {
         required : {

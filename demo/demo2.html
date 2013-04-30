@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="../jquery.formvalidate.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var opts = {
+				// allRequired 속성을 사용하면 form에 존재하는 모든 태그에 규칙을 적용한다. 
+				allRequired : true,
+				// 예외적으로 검증을 하지 않아야 할 태그가 있다면 exception 요소를 이용한다.
+				exception : {
+					"homepage" : {
+						"required" : false   // 필수입력에서 제외
+					}
+				}
+			};
+			$("form#writeForm").formValidate(opts);
+		});
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<h2 align="center">DEMO 2</h2>
+	<div class="title">태그 전체에 일괄적으로 적용하는 경우</div>
+	<div id="content">
+		<form name="writeForm" id="writeForm" method="post" action="#">
+			<table>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="emailAddress" /></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birthday" /></td>
+				</tr>
+				<tr>
+					<td>홈페이지</td>
+					<td><input type="text" name="homepage" /></td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="2">
+						<input type="submit" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

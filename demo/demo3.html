@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="../jquery.formvalidate.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var opts = {
+				allRequired : true,
+				// 유효성 검증을 하고난 후 특별히 추가적으로 해야할 작업이 필요하다면
+				// customSubmit 속성을 이용하여 submit을 제어할 수 있다.
+				customSubmit : function() {
+					alert('stopped submit.');
+				}
+			};
+			$("form#frm3").formValidate(opts);
+		});
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<h2 align="center">DEMO 3</h2>
+	<div class="title">커스텀 서브밋</div>
+	<div id="content">
+		<form name="frm3" id="frm3" method="post" action="#">
+			<table>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="username" /></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="text" name="sex" /></td>
+				</tr>
+				<tr>
+					<td>취미</td>
+					<td><input type="text" name="hobby" /></td>
+				</tr>
+				<tr>
+					<td width="100%" colspan="2">
+						<input type="submit" />
+					</td>
+				</tr>
+			</table>
+	</div>
+</div>
+
+</body>
+</html>
