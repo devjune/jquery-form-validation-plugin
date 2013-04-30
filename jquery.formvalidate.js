@@ -20,16 +20,20 @@
 (function ($) {
     $.validate = {
         currentForm : null,
-        config : {
-            allRequired : false,         // 유효성 검사 필드 전체 적용 여부
-            rules : {},                  // 유효성 검사 rule
-            label : {},                  // 필드의 레이블
-            customSubmit : null          // 직접 submit 할 경우 함수
+        config : {},
+        init : function() {
+            $.validate.config = {
+                    allRequired : false,      // 유효성 검사 필드 전체 적용 여부
+                    rules : {},                 // 유효성 검사 rule
+                    label : {},                 // 필드의 레이블
+                    customSubmit : null   // 직접 submit 할 경우 함수
+                }
         },
         build : function(opts) {
             if(!$(this).is("form")) return false;
 
             $.validate.currentForm = $(this);
+            $.validate.init();
             $.extend($.validate.config, opts);   // config에 options를 merge함.
 
             $.validate.currentForm.submit(function(){
@@ -238,6 +242,14 @@
                 break;
             } // end of switch
             return message;
+        },
+
+        /**
+         * 플러그인 destroy.
+         */
+        destroy : function() {
+            $.validate.init();
+            $.validate.currentForm.off();
         }
     };
 
@@ -309,6 +321,7 @@
     };
 
     $.fn.extend({
-        formValidate : $.validate.build
+        formValidate : $.validate.build,
+        destroyFormValidate : $.validate.destroy
     });
 })(jQuery);
