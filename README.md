@@ -1,10 +1,8 @@
 # jQuery Form Validation plugin.
 폼 유효성 검증 실패시 브라우저 경고창을 통해 에러 메시지를 알려주는 jQuery 플러그인입니다.
-> 라이센스: <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">_MIT_</a>.
+> 라이센스: <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">_MIT_</a>
 
-> 버전: _0.2b_.
-
-> jQuery 버전 요구사항: _jQuery 1.3+_.
+> jQuery 버전 요구사항: _jQuery 1.3+_
 
 
 # 사용법
