@@ -1,88 +1,101 @@
 <!doctype html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>jQuery form validate plugin demo 1</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="../jquery.formvalidate.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			var opts = {
-				/* tag의 이름과 경고창에 보여질 레이블 이름을 정의  */
-				label : {
-					"username" : "이름을",   //  -> '이름을 입력해주세요'
-					"password" : "비밀번호를",
-					"age" : "나이를",
-					"emailAddress": "이메일을"
-				},
-				/* 
-					규칙 정의. rule을 반드시 정의해야 태그에 대해 유효성 검증을 한다.
-					rule의 key값은 tag의 name이다.
-					@require : 빈값 체크 
-					@email : 이메일 필수입력
-					@number : 숫자만 허용
-					@minLength : 최소 길이
-					@maxLength : 최대 길이 
-				*/
-				rules : {
-					"username" : {
-						"required" : true,
-						"maxLength" : 10
-					},
-					"age" : {
-						"required" : true,
-						"minLength": 1,
-						"maxLength": 3,
-						"number" : true
-					},
-					"password" : {
-						"required" : true
-					},
-					"emailAddress" : {
-						"email" : true
-					}
-				}
-			};
-			$("form#writeForm").formValidate(opts);
-		});
-	</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>jQuery form validate plugin demo 1</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../jquery.formvalidate.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var opts = {
+                /* tag의 이름과 경고창에 보여질 레이블 이름을 정의  */
+                label : {
+                    "username" : "이름을",   //  -> '이름을 입력해주세요'
+                    "password" : "비밀번호를",
+                    "age" : "나이를",
+                    "emailAddress": "이메일을"
+                },
+                /* 
+                    규칙 정의. rule을 반드시 정의해야 태그에 대해 유효성 검증을 한다.
+                    rule의 key값은 tag의 name이다.
+                    @require : 빈값 체크 
+                    @email : 이메일 필수입력
+                    @number : 숫자만 허용
+                    @minLength : 최소 길이
+                    @maxLength : 최대 길이 
+                */
+                rules : {
+                    "username" : {
+                        "required" : true,
+                        "maxLength" : 10
+                    },
+                    "password" : {
+                        "required" : true
+                    },
+                    "age" : {
+                        "required" : true,
+                        "minLength": 1,
+                        "maxLength": 3,
+                        "number" : true
+                    },
+                    "emailAddress" : {
+                        "email" : true
+                    }
+                }
+            };
+            $("form#writeForm").formValidate(opts);
+        });
+    </script>
 </head>
 <body>
 
+<div class="page-header">
+    <h1 align="center">DEMO 1</h1>
+</div>
+
 <div class="container">
-	<h2 align="center">DEMO 1</h2>
-	<div class="title">태그 각각에 대해서 규칙을 설정할 경우</div>
-	<div id="content">
-		<form name="writeForm" id="writeForm" method="post" action="#">
-			<table>
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="username" /></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password" /></td>
-				</tr>
-				<tr>
-					<td>나이</td>
-					<td><input type="text" name="age" /></td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td><input type="text" name="emailAddress" /></td>
-				</tr>
-				<tr>
-					<td width="100%" colspan="2">
-						<input type="submit" />
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+<form class="form-horizontal well" id="writeForm" method="post">
+        <fieldset>
+          <legend>유효성 검증을 태그 각각에 대해서 체크하는 경우</legend>
+
+          <div class="control-group">
+            <label class="control-label" for="username">이름</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" name="username" id="username" />
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="password">패스워드</label>
+            <div class="controls">
+              <input type="password" class="input-xlarge" name="password" id="password" />
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="age">나이</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" name="age"  id="age" />
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="emailAddress">이메일</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" name="emailAddress" id="emailAddress" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-info btn-large">전송</button>
+            <button type="reset" class="btn btn-inverse btn-large">취소</button>
+          </div>
+        </fieldset>
+      </form>
 </div>
 
 </body>
