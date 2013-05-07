@@ -1,6 +1,0 @@
-@charset "UTF-8";
-body { 	font: 12px verdana;	color: #393939;	margin: 0px;	 padding: 0px;	padding-bottom: 25px; }
-.container { 	padding: 20px; width: 650px; border: 1px solid #cfcfcf; display: table;margin: 0px auto;}
-.container .title {  	background-color: #cfcfcf; font: bold 14px Helvetica; padding: 10px 20px 10px 50px; width: 300px;}
-.code { width: 90%; background-color: #e7e7e7; padding: 10px; margin: 0px auto;	font: 11px tahoma;	border: 1px solid #e1e1e1;}
-input { border: 1px solid #7c7c7c; }
