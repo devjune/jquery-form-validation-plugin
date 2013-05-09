@@ -27,7 +27,7 @@
                     rules : {},                 // 유효성 검사 rule
                     label : {},                 // 필드의 레이블
                     customSubmit : null   // 직접 submit 할 경우 함수
-                }
+                };
         },
         build : function(opts) {
             if(!$(this).is("form")) return false;
