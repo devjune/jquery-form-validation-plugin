@@ -6,7 +6,6 @@
 
 
 # 사용법
-
 jquery core와 plugin script를 로드합니다.
 ```javascript
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
